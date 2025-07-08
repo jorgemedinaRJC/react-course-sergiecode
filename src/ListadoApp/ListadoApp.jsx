@@ -1,8 +1,11 @@
 import { useState } from "react"
+import { AgregarTarea } from "./components/AgregarTarea"
 
 const Items = ({nombre, visto}) => {
   return (
-    <li>{nombre} {visto ? '✅' : '⛔'}</li>
+    <li>
+      {nombre} {visto ? '✅' : '⛔'}
+    </li>
   )
 }
 
@@ -21,11 +24,11 @@ export const ListadoApp = () => {
   
   return (
     <>
-      <h1>Listado de Temas</h1>
+      <h1>Listado de Tareas</h1>
       <ol>
         {arreglo.map(item => <Items key={item.indexOf} nombre={item.nombre} visto={item.visto}></Items>)}
       </ol>
-      <button onClick={addTask}>Agregar Tema</button>
+      <AgregarTarea agregarTarea={setArreglo}></AgregarTarea>
     </>
   )
 }
