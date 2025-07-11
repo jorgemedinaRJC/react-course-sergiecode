@@ -21,6 +21,17 @@ export const ListadoApp = () => {
     {nombre: "Redux", visto: false}
   ]
   const [arreglo, setArreglo] = useState(listado)
+
+  const onAgregarTarea = (val) => {
+    let valor = val.trim();
+    if(valor < 1) return
+    
+    const envio = {
+      nombre: valor,
+      visto: false
+    }
+    setArreglo([...arreglo, envio])
+  }
   
   return (
     <>
@@ -28,7 +39,7 @@ export const ListadoApp = () => {
       <ol>
         {arreglo.map(item => <Items key={item.indexOf} nombre={item.nombre} visto={item.visto}></Items>)}
       </ol>
-      <AgregarTarea agregarTarea={setArreglo}></AgregarTarea>
+      <AgregarTarea agregarTarea={onAgregarTarea}></AgregarTarea>
     </>
   )
 }
